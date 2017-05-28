@@ -15,5 +15,5 @@ public interface CommunicationManager {
 
     void disconnect(String roomId);
 
-    byte[] getStreamData(String roomId, String connectionId);
+    byte[] dequeueStreamData(String roomId, String socketId);
 }

@@ -12,18 +12,21 @@ import java.util.concurrent.LinkedBlockingQueue;
  */
 
 public class AppendQueue implements DefaultDataChannelObserver.OnMessageCallback{
-    private Map<String, Queue<DataChannel.Buffer>> realtimeActionMap = new HashMap<>();
+    private Map<String, LinkedBlockingQueue<DataChannel.Buffer>> realtimeActionMap = new HashMap<>();
+    private OnQueueCreated onQueueCreated;
 
-    public AppendQueue(Map<String, Queue<DataChannel.Buffer>> queue){
+    public AppendQueue(Map<String, LinkedBlockingQueue<DataChannel.Buffer>> queue, OnQueueCreated onQueueCreated){
         this.realtimeActionMap = queue;
+        this.onQueueCreated = onQueueCreated;
     }
 
     @Override
     public void call(String socketId, DataChannel.Buffer buffer) {
-        Queue<DataChannel.Buffer> queue = realtimeActionMap.get(socketId);
+        LinkedBlockingQueue<DataChannel.Buffer> queue = realtimeActionMap.get(socketId);
         if(queue == null){
-            queue = new LinkedBlockingQueue<>();
+            queue = new LinkedBlockingQueue<>(100);
             realtimeActionMap.put(socketId, queue);
+            onQueueCreated.call(socketId);
         }
         queue.add(buffer);
     }
@@ -31,5 +34,9 @@ public class AppendQueue implements DefaultDataChannelObserver.OnMessageCallback
     @Override
     public void destroy() {
         realtimeActionMap = new HashMap<>();
+    }
+
+    public static interface OnQueueCreated {
+        void call(String socketId);
     }
 }

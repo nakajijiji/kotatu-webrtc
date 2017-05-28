@@ -2,6 +2,8 @@ package com.kotatu.webrtc;
 
 import org.junit.Test;
 
+import java.nio.ByteBuffer;
+
 import static org.junit.Assert.*;
 
 /**
@@ -12,6 +14,9 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+        ByteBuffer bf = ByteBuffer.allocateDirect(10);
+        for(byte b : bf.array()){
+            System.out.println(b);
+        }
     }
 }

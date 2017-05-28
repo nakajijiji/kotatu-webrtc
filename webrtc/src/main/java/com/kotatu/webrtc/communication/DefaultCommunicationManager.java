@@ -89,7 +89,7 @@ public class DefaultCommunicationManager implements CommunicationManager {
     }
 
     @Override
-    public byte[] getStreamData(String roomId, String connectionId) {
+    public byte[] dequeueStreamData(String roomId, String socketId) {
         throw new UnsupportedOperationException();
     }
 

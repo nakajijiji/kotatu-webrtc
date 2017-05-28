@@ -3,7 +3,7 @@ package com.kotatu.webrtc.communication.observer;
 import android.media.AudioTrack;
 import android.util.Log;
 
-import com.kotatu.android.communication.DefaultCommunicationManager;
+import com.kotatu.webrtc.communication.DefaultCommunicationManager;
 
 import org.webrtc.DataChannel;
 

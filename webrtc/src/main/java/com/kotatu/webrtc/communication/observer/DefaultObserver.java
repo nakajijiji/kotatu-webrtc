@@ -3,9 +3,9 @@ package com.kotatu.webrtc.communication.observer;
 import android.util.Log;
 
 import com.github.nkzawa.socketio.client.Socket;
-import com.kotatu.android.communication.SocketMessageKey;
-import com.kotatu.android.communication.message.IceCandidateMessage;
-import com.kotatu.android.util.JsonSerializer;
+import com.kotatu.webrtc.communication.SocketMessageKey;
+import com.kotatu.webrtc.communication.message.IceCandidateMessage;
+import com.kotatu.webrtc.util.JsonSerializer;
 
 import org.webrtc.AudioTrack;
 import org.webrtc.DataChannel;

@@ -41,7 +41,6 @@ public class AudioRecordTask implements Runnable {
 //                    AudioFormat.CHANNEL_CONFIGURATION_MONO, AudioFormat.ENCODING_PCM_16BIT);
             AudioRecord audioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC, sampleAudioBitRate,
                     AudioFormat.CHANNEL_CONFIGURATION_MONO, AudioFormat.ENCODING_PCM_16BIT, bufferLength);
-            audioData = new short[bufferLength];
             audioRecord.startRecording();
             Log.d(LOG_TAG, "audioRecord.startRecording()");
             audioRecordEnabled = true;
